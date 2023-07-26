@@ -11,13 +11,9 @@ class DiaryPackageServiceProvider extends ServiceProvider
 
     protected bool $tenancy;
 
-    public function __construct()
-    {
-        $this->tenancy = function_exists('tenancy');
-    }
-
     public function boot()
     {
+        $this->tenancy = function_exists('tenancy');
         if($this->app->runningInConsole()) {
             $migrationPath = $this->tenancy ? 'migrations/tenant' : 'migrations';
             $this->publishes([
