@@ -24,8 +24,12 @@ class DiaryPackageServiceProvider extends ServiceProvider
             ], 'reesmcivor-diary');
         }
 
-        $this->mapRoutes();
         $this->loadViewsFrom(__DIR__.'/resources/views', 'diary');
+    }
+
+    public function map() 
+    {
+        $this->mapRoutes();
     }
 
     protected function mapRoutes()
