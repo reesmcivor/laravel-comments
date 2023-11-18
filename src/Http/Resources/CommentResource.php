@@ -11,10 +11,9 @@ class CommentResource extends JsonResource
         return [
             'id' => $this->id,
             'content' => $this->content,
-            'files' => FileResource::collection($this->files),
+            'files' => FileResourceCollection::collection($this->files),
             'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
-            // Add any other attributes you want to include in the JSON response.
+            'updated_at' => $this->updated_at
         ];
     }
 }

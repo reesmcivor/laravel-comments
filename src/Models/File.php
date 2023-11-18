@@ -11,6 +11,7 @@ class File extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $table = 'comment_file';
 
     protected static function newFactory()
     {

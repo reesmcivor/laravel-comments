@@ -5,6 +5,7 @@ namespace ReesMcIvor\Comments\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use ReesMcIvor\Comments\Database\Factories\CommentFactory;
 
 class Comment extends Model
@@ -13,14 +14,14 @@ class Comment extends Model
 
     protected $guarded = ['id'];
 
-    protected $casts = ['content' => 'encypted'];
+    protected $casts = ['content' => 'encrypted'];
 
     protected static function newFactory()
     {
         return CommentFactory::new();
     }
 
-    public function files()
+    public function files(): HasMany
     {
         return $this->hasMany(File::class);
     }

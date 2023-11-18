@@ -16,7 +16,7 @@ class CreateCommentRequest extends FormRequest
         return [
             'content' => 'required|string',
             'comment_id' => 'nullable|exists:comments,id',
-            'file' => 'mimetypes:image/jpeg,image/png,video/avi,video/mpeg,video/quicktime,video/mp4,video/mov,application/octet-stream'
+            'files.*' => 'mimetypes:image/jpeg,image/png,video/avi,video/mpeg,video/quicktime,video/mp4,video/mov,application/octet-stream'
         ];
     }
 

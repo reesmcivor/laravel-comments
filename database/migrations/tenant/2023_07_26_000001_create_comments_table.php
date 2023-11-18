@@ -13,8 +13,8 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->text('content');
-            $table->unsignedBigInteger('commentable_id');
-            $table->string('commentable_type');
+            $table->unsignedBigInteger('commentable_id')->nullable();
+            $table->string('commentable_type')->nullable();
             $table->foreignIdFor(Comment::class, 'parent_id')->nullable();
             $table->foreignIdFor(User::class);
             $table->timestamps();

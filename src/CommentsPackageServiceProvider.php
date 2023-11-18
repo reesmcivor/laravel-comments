@@ -21,18 +21,14 @@ class CommentsPackageServiceProvider extends ServiceProvider
                 __DIR__ . '/../database/migrations/tenant' => database_path($migrationPath),
                 __DIR__ . '/../publish/tests' => base_path('tests/Comments'),
                 //__DIR__ . '/../publish/config' => base_path('config'),
-            ], 'reesmcivor-comments');
+            ], 'laravel-comments');
         }
 
         $this->loadViewsFrom(__DIR__.'/resources/views', 'comments');
-    }
-
-    public function map() 
-    {
         $this->mapRoutes();
     }
 
-    protected function mapRoutes()
+    protected function mapRoutes(): void
     {
         Route::middleware(array_filter(['web', $this->tenancy ? 'tenant' : null]))
             ->namespace($this->namespace)
@@ -41,6 +37,6 @@ class CommentsPackageServiceProvider extends ServiceProvider
 
     private function modulePath($path)
     {
-        return __DIR__ . '/../../' . $path;
+        return __DIR__ . '/' . $path;
     }
 }

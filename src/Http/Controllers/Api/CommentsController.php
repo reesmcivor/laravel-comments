@@ -18,19 +18,23 @@ class CommentsController extends Controller
 
     public function store( CreateCommentRequest $request )
     {
-        $file = $request->get('file');
+        $files = $request->allFiles();
+
         $comment = Comment::create([
             'user_id' => auth()->user()->id,
             'comment_id' => $request->get('comment_id'),
             'content' => $request->get('content')
         ]);
 
-        if($file) {
-            $filePath = $file->storeAs('comments', Str::random(40) . '.' . $file->extension(), 'comments');
-            File::create([
-                'file' => $filePath,
-                'comment_id' => $comment->id
-            ]);
+        if ($request->hasFile('files')) {
+            foreach ($request->file('files') as $file)
+            {
+                $file = $file->store('files', 'comments');
+                $comment->files()->create([
+                    'file' => $file,
+                    'original_name' => $file,
+                ]);
+            }
         }
 
         return new CommentResource($comment);

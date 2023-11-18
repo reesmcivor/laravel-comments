@@ -11,7 +11,7 @@ return new class extends Migration
     {
         Schema::create('comment_file', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('original_name');
             $table->string('file');
             $table->foreignIdFor(Comment::class);
             $table->timestamps();
