@@ -1,14 +1,14 @@
 <?php
 
-namespace ReesMcIvor\Diary;
+namespace ReesMcIvor\Comments;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
-class DiaryPackageServiceProvider extends ServiceProvider
+class CommentsPackageServiceProvider extends ServiceProvider
 {
 
-    protected $namespace = 'ReesMcIvor\Diary\Http\Controllers';
+    protected $namespace = 'ReesMcIvor\Comments\Http\Controllers';
 
     protected bool $tenancy;
 
@@ -19,12 +19,12 @@ class DiaryPackageServiceProvider extends ServiceProvider
             $migrationPath = $this->tenancy ? 'migrations/tenant' : 'migrations';
             $this->publishes([
                 __DIR__ . '/../database/migrations/tenant' => database_path($migrationPath),
-                __DIR__ . '/../publish/tests' => base_path('tests/Diary'),
+                __DIR__ . '/../publish/tests' => base_path('tests/Comments'),
                 __DIR__ . '/../publish/config' => base_path('config'),
-            ], 'reesmcivor-diary');
+            ], 'reesmcivor-comments');
         }
 
-        $this->loadViewsFrom(__DIR__.'/resources/views', 'diary');
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'comments');
     }
 
     public function map() 

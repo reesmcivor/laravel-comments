@@ -1,6 +1,6 @@
 {
-    "name": "reesmcivor/laravel-diary",
-    "description": "Laravel Dairy",
+    "name": "reesmcivor/laravel-comments",
+    "description": "Laravel Comments",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -16,14 +16,14 @@
     },
     "autoload": {
         "psr-4": {
-            "ReesMcIvor\\Diary\\": "src/",
-            "ReesMcIvor\\Diary\\Database\\Factories\\": "database/factories/"
+            "ReesMcIvor\\Comments\\": "src/",
+            "ReesMcIvor\\Comments\\Database\\Factories\\": "database/factories/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "ReesMcIvor\\Diary\\DiaryPackageServiceProvider"
+                "ReesMcIvor\\Comments\\CommentsPackageServiceProvider"
             ]
         }
     },

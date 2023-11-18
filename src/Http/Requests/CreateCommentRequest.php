@@ -1,10 +1,10 @@
 <?php
 
-namespace ReesMcIvor\Diary\Http\Requests;
+namespace ReesMcIvor\Comments\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateDiaryEntryRequest extends FormRequest
+class CreateCommentRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -15,6 +15,7 @@ class CreateDiaryEntryRequest extends FormRequest
     {
         return [
             'content' => 'required|string',
+            'comment_id' => 'nullable|exists:comments,id',
             'file' => 'mimetypes:image/jpeg,image/png,video/avi,video/mpeg,video/quicktime,video/mp4,video/mov,application/octet-stream'
         ];
     }
