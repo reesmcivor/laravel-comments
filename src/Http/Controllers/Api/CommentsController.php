@@ -3,10 +3,8 @@
 namespace ReesMcIvor\Comments\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
 use ReesMcIvor\Comments\Http\Resources\CommentResource;
 use ReesMcIvor\Comments\Models\Comment;
-use ReesMcIvor\Comments\Models\File;
 use ReesMcIvor\Comments\Http\Requests\CreateCommentRequest;
 
 class CommentsController extends Controller

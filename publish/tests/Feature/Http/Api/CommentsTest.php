@@ -21,6 +21,7 @@ class CommentsTest extends TestCase
         $file1 = UploadedFile::fake()->image('file1.jpg');
         $file2 = UploadedFile::fake()->image('file2.jpg');
         $file3 = UploadedFile::fake()->image('file3.jpg');
+
         $files = [$file1, $file2, $file3];
 
         $this
@@ -29,12 +30,18 @@ class CommentsTest extends TestCase
                 'files' => $files,
             ])
             ->assertSuccessful()
-            ->assertJson([
+            ->assertJsonStructure([
                 'data' => [
                     'files' => [
-                        ['file' => 'avatar.jpg']
+                        'data' => [
+                            '*' => [
+                                'id',
+                                'file',
+                                'original_name'
+                            ]
+                        ]
                     ],
-                    'content' => 'This is a comment'
+                    'content'
                 ]
             ]);
     }

@@ -30,9 +30,9 @@ class CommentsPackageServiceProvider extends ServiceProvider
 
     protected function mapRoutes(): void
     {
-        Route::middleware(array_filter(['web', $this->tenancy ? 'tenant' : null]))
+        Route::middleware('api')
             ->namespace($this->namespace)
-            ->group($this->modulePath('routes/tenant.php'));
+            ->group($this->modulePath('routes/api.php'));
     }
 
     private function modulePath($path)

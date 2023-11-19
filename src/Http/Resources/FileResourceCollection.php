@@ -6,15 +6,12 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class FileResourceCollection extends ResourceCollection
 {
-    public function toArray($request) : array
+    public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'name' => $this->name,
-            'file' => $this->file,
-            'url' => asset($this->path),
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'data' => $this->collection->map(function($file) {
+                return new FileResource($file);
+            })
         ];
     }
 }
