@@ -19,9 +19,8 @@ class CommentsController extends Controller
         $files = $request->allFiles();
 
         $comment = Comment::create([
-            'user_id' => auth()->user()->id,
-            'comment_id' => $request->get('comment_id'),
-            'content' => $request->get('content')
+            ...$request->all(),
+            'user_id' => auth()->user()->id
         ]);
 
         if ($request->hasFile('files')) {
