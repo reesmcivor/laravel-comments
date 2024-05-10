@@ -27,8 +27,9 @@ class Comment extends Model
                 'oli@optimal-movement.co.uk',
                 'hello@logicrises.co.uk'
             ])->get()->each(function($user) use ($model) {
-                echo $user->email;
-                $user->notify(new NewCommentNotification($model));
+                $user->notify((new NewCommentNotification($model))
+                    ->afterCommit()
+                    ->onQueue('notifications'));
             });
         });
     }
